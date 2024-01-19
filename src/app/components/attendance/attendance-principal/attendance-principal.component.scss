@@ -1,0 +1,21 @@
+.filter-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Puedes ajustar el margen según tus preferencias */
+  }
+  
+  .filter-container mat-form-field {
+    margin-right: 10px; /* Puedes ajustar el margen entre los campos según tus preferencias */
+  }
+  
+  .mat-form-field {
+    flex: 1; /* Distribuye el espacio disponible entre los elementos para que ocupen todo el ancho disponible */
+  }
+  
+  /* Asegúrate de que la anchura total no exceda el ancho del contenedor padre, ajusta según sea necesario */
+  
+  /* Agrega un estilo para separar visualmente los elementos */
+  .separator {
+    margin: 0 10px;
+  }
+  

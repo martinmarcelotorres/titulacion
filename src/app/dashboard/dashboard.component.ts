@@ -1,5 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {TeenDashboardInfoComponent} from "./dashboard-components/teen-dashboard-info/teen-dashboard-info.component";
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,15 +7,9 @@ import {TeenDashboardInfoComponent} from "./dashboard-components/teen-dashboard-
 })
 export class DashboardComponent implements OnInit {
 
-  @ViewChild('teenDashboardInfo') teenDashboardInfo: TeenDashboardInfoComponent | undefined;
-
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  listTeenInfo() {
-    this.teenDashboardInfo?.findAllDataActiveTeen();
   }
 
 }

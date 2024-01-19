@@ -3,8 +3,7 @@ import { OAuthService } from 'angular-oauth2-oidc';
 
 @Injectable({
     providedIn: 'root'
-    })
-    
+})
 export class LoginService {
 
     constructor(private oauthService: OAuthService) { }
@@ -31,6 +30,6 @@ export class LoginService {
         console.log(payloadDecoded.realm_access);
         console.log(payloadDecoded);
 
-        return payloadDecoded.realm_access.roles.indexOf('admin')! == -1;
+        return payloadDecoded.realm_access.roles.indexOf('realm-admin')! == -1;
     }
 }

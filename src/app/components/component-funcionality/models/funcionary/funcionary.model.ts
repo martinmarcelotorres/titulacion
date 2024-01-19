@@ -7,9 +7,9 @@ export interface Funcionary {
   phoneNumber: string;
   range: string;
   confirmation: string;
+  department: string;
   address: string;
   email: string;
   codubi: string;
-  idOperativeUnit: number;
-  status: string;
+  estado: string;
 }

@@ -1,0 +1,145 @@
+<div class="container-active">
+    <mat-card class="w-100">
+      <mat-card-content>
+        <div class="titleWeb" align="center" style="margin-top: -2rem">
+          <figure>
+              <p style="font-size: 45px" class="lead">
+                   LISTADO DE ASISTENCIA DE LOS ADOLESCENTES EN LAS ACTIVIDADES DE PROGRAMAS
+              </p>
+              <figcaption class="blockquote-footer">
+
+                  "Por favor, utilice y escriba correctamente los filtros de búsqueda para encontrar la información que desea. "
+                  <strong><cite title="Source Title">De manera compresiva</cite></strong> y <strong><cite title="Source Title">correcta.</cite></strong>
+              </figcaption>
+          </figure>
+      </div>
+
+
+        <div class="container">
+
+          <div class="mat-form-field">
+            <mat-form-field appearance="fill">
+              <mat-label>Filtrado de Soa Perteneciente:</mat-label>
+              <input matInput (input)="applyFilter('soaTeen', $event)" placeholder="Escriba el Soa Perteneciente">
+            </mat-form-field>
+          </div>
+          
+
+          <div class="filter-container">
+            <div class="mat-form-field">
+            <mat-form-field appearance="fill">
+              <mat-label>Filtrado de Nombre y Apellidos:</mat-label>
+                <input matInput (input)="applyFilter('dataTeen', $event)" placeholder="Escriba el Nombre del Adolescente">
+              </mat-form-field>
+            </div>
+            <span class="separator"></span>
+            <div class="mat-form-field">
+                <mat-form-field appearance="fill">
+                  <mat-label>Filtrado de DNI:</mat-label>
+                  <input matInput (input)="applyFilter('dniTeen', $event)" placeholder="Escriba el Número de DNI">
+                </mat-form-field>
+            </div>
+            <span class="separator"></span>
+            <div class="mat-form-field">
+                <mat-form-field appearance="fill">
+                  <mat-label>Asistencia:</mat-label>
+                  <mat-select placeholder="Seleccione su Asistencia" [(value)]="selectedAttendanceFilter" (selectionChange)="applyFilter('asistencia', $event)">
+                    <mat-option value="">TODOS</mat-option>
+                    <mat-option value="A">ASISTIO</mat-option>
+                    <mat-option value="F">NO ASISTIO</mat-option>
+                  </mat-select>
+                </mat-form-field>
+            </div>
+          </div>       
+          
+  
+          <table id="tableOfDataFuncionary" mat-table [dataSource]="dataSource" matSort class="table-responsive">
+  
+            <ng-container matColumnDef="dataTeen">
+              <th mat-header-cell *matHeaderCellDef>Datos Del Adolescente</th>
+              <td mat-cell *matCellDef="let dataTransaccional">
+                {{ dataTransaccional.teeneger.name }},
+                {{ dataTransaccional.teeneger.surnameFather }}
+                {{ dataTransaccional.teeneger.surnameMother }}
+              </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="idprogram">
+              <th mat-header-cell *matHeaderCellDef class="th mat-header-cell">Programa Perteneciente :</th>
+              <td mat-cell *matCellDef="let dataTransaccional" class="td mat-cell">
+                {{ getDataCompleteProgramById(dataTransaccional.activities.id_program) }}
+              </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="dniTeen">
+              <th mat-header-cell *matHeaderCellDef class="th mat-header-cell">Numero de DNI:</th>
+              <td mat-cell *matCellDef="let dataTransaccional" class="td mat-cell">
+                {{ dataTransaccional.teeneger.dni }}
+              </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="soaTeen">
+              <th mat-header-cell *matHeaderCellDef class="th mat-header-cell">Soa Perteneciente :</th>
+              <td mat-cell *matCellDef="let dataTransaccional" class="td mat-cell">
+                {{ getDataCompleteOperativeUnitById(dataTransaccional.teeneger.id_operativeunit) }}
+              </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="dataActivies">
+              <th mat-header-cell *matHeaderCellDef class="th mat-header-cell">Actividad : </th>
+              <td mat-cell *matCellDef="let dataTransaccional" class="td mat-cell">
+                {{ dataTransaccional.activities.name }}
+              </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="dataActivies2">
+              <th mat-header-cell *matHeaderCellDef class="th mat-header-cell">Descripción : </th>
+              <td mat-cell *matCellDef="let dataTransaccional" class="td mat-cell">
+                Descripción : {{ dataTransaccional.activities.description }}
+              </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="dataActivies3">
+              <th mat-header-cell *matHeaderCellDef class="th mat-header-cell"> Fecha Realización : </th>
+              <td mat-cell *matCellDef="let dataTransaccional" class="td mat-cell">
+                {{ formatDate(dataTransaccional.activities.date) }}
+              </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="dniActivies">
+              <th mat-header-cell *matHeaderCellDef class="th mat-header-cell">Duración de la Actividad:</th>
+              <td mat-cell *matCellDef="let dataTransaccional" class="td mat-cell">
+                {{ dataTransaccional.activities.duration }}
+              </td>
+            </ng-container>
+  
+
+
+            <ng-container matColumnDef="dataAttendance">
+              <th mat-header-cell *matHeaderCellDef class="th mat-header-cell">Asistencia del Adolescente:</th>
+              <td mat-cell *matCellDef="let dataTransaccional" class="td mat-cell">
+                {{ getAttendanceStatusText(dataTransaccional.attemdance.asistencia) }}
+              </td>
+            </ng-container>
+  
+            <ng-container class="container-buttoms" matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef class="th mat-header-cell" style="width: 15rem"> Acciones</th>
+              <td mat-cell *matCellDef="let dataTransaccional" class="td mat-cell">
+                <button id="buttonEliminar" mat-flat-button color="warn"
+                        (click)="deleteDataCompleteAsignation(dataTransaccional)">
+                  Eliminar
+                </button>
+              </td>
+            </ng-container>
+  
+            <tr mat-header-row *matHeaderRowDef="funcionaryColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: funcionaryColumns;"></tr>
+          </table>
+  
+          <mat-paginator [pageSizeOptions]="[10, 20, 30]" [pageSize]="10" showFirstLastButtons></mat-paginator>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  

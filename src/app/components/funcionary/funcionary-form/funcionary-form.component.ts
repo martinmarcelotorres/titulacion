@@ -1,28 +1,22 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FuncionaryService } from '../../component-funcionality/services/funcionary/funcionary.service';
-import { Router } from '@angular/router';
-import { Funcionary } from '../../component-funcionality/models/funcionary/funcionary.model';
-import { HotToastService } from '@ngneat/hot-toast';
-import { OperativeUnitService } from '../../component-funcionality/services/operativeUnit/operative-unit.service';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FuncionaryService} from "../../component-funcionality/services/funcionary/funcionary.service";
+import {Router} from "@angular/router";
+import {Funcionary} from "../../component-funcionality/models/funcionary/funcionary.model";
 
 @Component({
   selector: 'app-funcionary-form',
   templateUrl: './funcionary-form.component.html',
-  styleUrls: ['./funcionary-form.component.scss'],
+  styleUrls: ['./funcionary-form.component.scss']
 })
 export class FuncionaryFormComponent implements OnInit, OnDestroy {
+
   funcionaryDataForm: FormGroup = new FormGroup({});
   ubigeoData: any[] = [];
-  operativeUnitDataComplete: any[] = [];
 
-  constructor(
-    public _funcionaryService: FuncionaryService,
-    private _router: Router,
-    private _fb: FormBuilder,
-    private toastService: HotToastService,
-    private _operativeUnit: OperativeUnitService
-  ) {
+  constructor(public _funcionaryService: FuncionaryService,
+              private _router: Router,
+              private _fb: FormBuilder) {
     this.funcionaryDataForm = this._fb.group({
       id_funcionary: [null],
       name: ['', Validators.required],
@@ -34,42 +28,28 @@ export class FuncionaryFormComponent implements OnInit, OnDestroy {
       confirmation: ['N'],
       address: ['', Validators.required],
       email: ['', Validators.required],
-      codubi: ['', Validators.required],
-      idOperativeUnit: ['', Validators.required],
+      codubi: [''],
       status: ['A'],
     });
     if (this._funcionaryService.funcionarySelected) {
-      this.funcionaryDataForm.patchValue(
-        this._funcionaryService.funcionarySelected
-      );
+      this.funcionaryDataForm.patchValue(this._funcionaryService.funcionarySelected);
     }
   }
 
   ngOnInit(): void {
     this.findAllDataUbigeoForRegister();
-    this.findAllDataCompleteOperativeUnit();
   }
 
   navigateToList() {
     this._router.navigate(['funcionary']).then(() => {
-      //console.log('Funcionary List.');
-    });
+      console.log('Funcionary List.')
+    })
   }
 
   findAllDataUbigeoForRegister() {
-    this._funcionaryService
-      .findAllDataUbigeoAddress()
-      .subscribe((dataUbigeoForRegister: any) => {
-        this.ubigeoData = dataUbigeoForRegister;
-      });
-  }
-
-  findAllDataCompleteOperativeUnit() {
-    this._operativeUnit
-      .findAllDataOperativeUnit()
-      .subscribe((dataCompleteOperativeUnit: any) => {
-        this.operativeUnitDataComplete = dataCompleteOperativeUnit;
-      });
+    this._funcionaryService.findAllDataUbigeoAddress().subscribe((dataUbigeoForRegister: any) => {
+      this.ubigeoData = dataUbigeoForRegister;
+    })
   }
 
   saveOrUpdateFuncionary() {
@@ -83,27 +63,20 @@ export class FuncionaryFormComponent implements OnInit, OnDestroy {
   }
 
   registerNewDataFuncionary() {
-    //console.log('Datos ingresados en el formulario: ',this.funcionaryDataForm.value);
-    this._funcionaryService
-      .saveNewFuncionary(this.funcionaryDataForm.value)
-      .subscribe((dataNewFuncionary: any) => {
-        //console.log('New Data Funcionary: ', dataNewFuncionary)
-        this.funcionaryDataForm.reset();
-        this.navigateToList();
-        this.toastService.success('Registro exitoso!');
-      });
+    console.log('Datos ingresados en el formulario: ', this.funcionaryDataForm.value);
+    this._funcionaryService.saveNewFuncionary(this.funcionaryDataForm.value).subscribe((dataNewFuncionary: any) => {
+      //console.log('New Data Funcionary: ', dataNewFuncionary)
+      this.navigateToList();
+    });
   }
 
   updateDataFuncionary() {
-    //console.log('Datos ingresados en el formulario: ', this.funcionaryDataForm.value);
-    this._funcionaryService
-      .updateDataFuncionary(this.funcionaryDataForm.value)
-      .subscribe((dataUpdateFuncionary: any) => {
-        //console.log('Update Data Funcionary: ', dataUpdateFuncionary)
-        this.funcionaryDataForm.reset();
-        this.navigateToList();
-        this.toastService.success('Registro actualizado correctamente!');
-      });
+    console.log('Datos ingresados en el formulario: ', this.funcionaryDataForm.value);
+    this._funcionaryService.updateDataFuncionary(this.funcionaryDataForm.value).subscribe((dataUpdateFuncionary: any) => {
+      //console.log('Update Data Funcionary: ', dataUpdateFuncionary)
+      this.funcionaryDataForm.reset();
+      this.navigateToList();
+    });
   }
 
   ngOnDestroy(): void {

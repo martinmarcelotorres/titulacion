@@ -19,15 +19,20 @@ import { SliderComponent } from './slider/slider.component';
 import { SlideToggleComponent } from './slide-toggle/slide-toggle.component';
 import { ButtonsComponent } from './buttons/buttons.component';
 import { TooltipsComponent } from './tooltips/tooltips.component';
-import { TeenPrincipalComponent } from './teen/teen-principal/teen-principal.component';
-import { TeenFormComponent } from './teen/teen-form/teen-form.component';
+import { TeenPrincipalComponent } from './teen/operationalunit-principal/teen-principal.component';
+import { TeenFormComponent } from './teen/operationalunit-form/teen-form.component';
 import { AsignationPrincipalComponent } from './asignation/asignation-principal/asignation-principal.component';
 import { AsignationFormComponent } from './asignation/asignation-form/asignation-form.component';
 import { FuncionaryPrincipalComponent } from './funcionary/funcionary-principal/funcionary-principal.component';
 import { FuncionaryFormComponent } from './funcionary/funcionary-form/funcionary-form.component';
-import { ArchivosComponent } from './archivos/archivos/archivos.component';
-import { WelcomePrincipalComponent } from './welcome/welcome-principal/welcome-principal.component'
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { OperationalunitPrincipalComponent } from './operationalunit/operationalunit-principal/operationalunit-principal.component';
+import { OperationalunitFormComponent } from './operationalunit/operationalunit-form/operationalunit-form.component';
+import { ProgramPrincipalComponent } from './program/program-principal/program-principal.component';
+import { ProgramFormComponent } from './program/program-form/program-form.component';
+import { UnitprogramPrincipalComponent } from './unitprogram/unitprogram-principal/unitprogram-principal.component';
+import { UnitprogramFormComponent } from './unitprogram/unitprogram-form/unitprogram-form.component';
+import { AttendancePrincipalComponent } from './attendance/attendance-principal/attendance-principal.component';
+import { AttendanceFormComponent } from './attendance/attendance-form/attendance-form.component'
 
 
 @NgModule({
@@ -45,7 +50,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         TabsComponent,
         ExpansionComponent,
         ChipsComponent,
-        MatPaginatorModule,
         ProgressComponent,
         FormsComponent,
         AlertsComponent,
@@ -77,9 +81,14 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     AsignationFormComponent,
     FuncionaryPrincipalComponent,
     FuncionaryFormComponent,
-    ArchivosComponent,
-    WelcomePrincipalComponent,
-    
+    OperationalunitPrincipalComponent,
+    OperationalunitFormComponent,
+    ProgramPrincipalComponent,
+    ProgramFormComponent,
+    UnitprogramPrincipalComponent,
+    UnitprogramFormComponent,
+    AttendancePrincipalComponent,
+    AttendanceFormComponent
   ]
 })
 export class ComponentsModule { }

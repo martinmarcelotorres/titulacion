@@ -1,11 +1,8 @@
-import {Injectable} from '@angular/core';
-import {environment} from 'src/environments/environment.development';
-import {Asignation} from '../../models/asignation/asignation.model';
-import {
-  TransactionalAllocation,
-  transactionDataCompleteResponse
-} from '../../models/asignation/transactionDataComplete.model';
-import {HttpClient} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment.development';
+import { Asignation } from '../../models/asignation/asignation.model';
+import { transactionDataCompleteResponse } from '../../models/asignation/transactionDataComplete.model';
+import { HttpClient } from '@angular/common/http';
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -14,17 +11,12 @@ import {Observable} from "rxjs";
 export class AsignationService {
   private urlAsignation = `${environment.apiUrlAsignation}/api/transaccionalData`;
   asignationSelected: Asignation | undefined = undefined;
-  transactionSelected: TransactionalAllocation | undefined = undefined;
+  transactionSelected: transactionDataCompleteResponse | undefined = undefined;
 
-  constructor(private _http: HttpClient) {
-  }
+  constructor(private _http: HttpClient) {}
 
   findAll() {
     return this._http.get(this.urlAsignation + '/listData');
-  }
-
-  findAsignationByTeenId(id_teen: number): Observable<Asignation> {
-    return this._http.get<Asignation>(`${this.urlAsignation}/listData/idTeen/${id_teen}`);
   }
 
   findAllDatosWithoutBody() {
@@ -61,16 +53,16 @@ export class AsignationService {
   updateTwoWayAsignation(twoWayAsignation: transactionDataCompleteResponse) {
     return this._http.put(
       this.urlAsignation +
-      '/' +
-      twoWayAsignation.transaccionalAllocation.id_funcionaryteend,
+        '/' +
+        twoWayAsignation.transaccionalAllocation.id_funcionaryteend,
       twoWayAsignation
     );
   }
 
-  deleteLogicalDataAsignation(id_teen: number) {
+  deleteLogicalDataAsignation(asignation: Asignation) {
     return this._http.patch(
-      `${this.urlAsignation}/deleteLogical/${id_teen}`,
-      {}
+      this.urlAsignation + '/deleteLogical/' + asignation.id_funcionaryteend,
+      asignation
     );
   }
 
@@ -89,11 +81,6 @@ export class AsignationService {
 
   saveMasive(dto: any): Observable<void> {
     return this._http.post<void>(`${this.urlAsignation}/bulk`, dto);
-  }
-
-  generarPDF(): Observable<ArrayBuffer> {
-    const url = `${this.urlAsignation}/report`;
-    return this._http.get(url, {responseType: 'arraybuffer'});
   }
 
 }

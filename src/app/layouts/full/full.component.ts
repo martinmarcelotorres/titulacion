@@ -1,9 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
-import {Observable} from 'rxjs';
-import {map, shareReplay} from 'rxjs/operators';
-import {LoginService} from 'src/app/components/component-funcionality/services/login/login.service';
-import {MenssageService} from "../../components/component-funcionality/services/login/menssage.service";
+import { Component } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Observable } from 'rxjs';
+import { map, shareReplay } from 'rxjs/operators';
+import { LoginService } from 'src/app/components/component-funcionality/services/login/login.service';
 
 interface sidebarMenu {
   link: string;
@@ -16,15 +15,9 @@ interface sidebarMenu {
   templateUrl: './full.component.html',
   styleUrls: ['./full.component.scss']
 })
-export class FullComponent implements OnInit {
+export class FullComponent {
 
-  isLoggedIn: boolean = false;
-
-  showBarInfo = true;
-
-  isLogged!: boolean;
-  idAdmin!: boolean;
-  username!: boolean;
+  search: boolean = false;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -32,20 +25,7 @@ export class FullComponent implements OnInit {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver,
-              private loginService: LoginService,
-              private messageService: MenssageService) {
-  }
-
-  ngOnInit(): void {
-
-    this.messageService.getMessage().subscribe(res => {
-        this.username = res['text'];
-        this.isLogged = res['isLogged'];
-        this.idAdmin = res['idAdmin'];
-      },
-      err => console.log(err));
-  }
+  constructor(private breakpointObserver: BreakpointObserver, private loginservice:LoginService) { }
 
   routerActive: string = "activelink";
 
@@ -56,13 +36,33 @@ export class FullComponent implements OnInit {
       menu: "Dashboard",
     },
     {
+      link: "/attendance",
+      icon: "grid",
+      menu: "Asistencias",
+    },    
+    {
+      link: "/operativeunit",
+      icon: "grid",
+      menu: "Unidades Operativas",
+    },
+    {
+      link: "/program",
+      icon: "grid",
+      menu: "Programas",
+    },
+    {
+      link: "/unitprogram",
+      icon: "grid",
+      menu: "Asignación De Programas a una Unidad Operativa", 
+    },
+    {
       link: "/teen",
-      icon: "user",
+      icon: "grid",
       menu: "Adolescentes",
     },
     {
       link: "/funcionary",
-      icon: "users",
+      icon: "disc",
       menu: "Funcionarios",
     },
     {
@@ -71,21 +71,21 @@ export class FullComponent implements OnInit {
       menu: "Asignación",
     },
     {
-      link: "/adolescent-list",
-      icon: "voicemail",
-      menu: "Programas",
-    },
-    {
-      link: "/asignacion",
+      link: "/button",
       icon: "disc",
-      menu: "Asignación de adolescentes a programas",
+      menu: "Buttons",
     },
     {
-      link: "/trans-dist",
-      icon: "grid",
-      menu: "Expedientes Adolescentes",
+      link: "/forms",
+      icon: "layout",
+      menu: "Forms",
     },
-     /*{
+    {
+      link: "/alerts",
+      icon: "info",
+      menu: "Alerts",
+    },
+    {
       link: "/grid-list",
       icon: "file-text",
       menu: "Grid List",
@@ -144,23 +144,13 @@ export class FullComponent implements OnInit {
       link: "/slide-toggle",
       icon: "layers",
       menu: "Slide Toggle",
-    },*/
+    },
   ]
-
-  showSideBard() {
-    this.showBarInfo = true;
+  login(){
+    this.loginservice.login();
   }
 
-  hideSideBard() {
-    this.showBarInfo = !this.showBarInfo;
+  logout(){
+    this.loginservice.logout();
   }
-
-  login() {
-    this.loginService.login();
-  }
-
-  logout() {
-    this.loginService.logout();
-  }
-
 }

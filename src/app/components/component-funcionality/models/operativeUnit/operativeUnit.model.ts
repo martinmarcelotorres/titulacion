@@ -1,7 +1,7 @@
 export interface OperativeUnit {
   id_operativeunit: number;
   name: string;
-  id_funcionary: number;
+  director: string;
   phoneNumber: string;
   address: string;
   codubi: string;

@@ -3,12 +3,12 @@
 }
 
 .container-general-transfer {
-  max-height: 40rem;
-  min-height: 25rem;
+  max-height: 16.5rem;
+  min-height: 16.5rem;
 }
 
 .container-button {
-  margin: 33px 10px 10px 10px;
+  margin: 15px 10px 10px 10px;
 }
 
 #button-transfer,
@@ -23,15 +23,11 @@
   margin: 10px 10px 10px 10px;
 }
 
-#button-transfer {
-  background-color: #9ADE7B;
-}
-
 .container-form {
   width: 40%;
   display: flex;
-  margin-left: 45rem;
-  margin-top: -17rem;
+  margin-left: 43rem;
+  margin-top: -10rem;
 }
 
 .container-functions-buttons {
@@ -51,28 +47,11 @@
 
 .container-image-dissapear {
   display: flex;
-  margin-left: 44rem;
-  margin-top: -16.5rem;
+  margin-left: 43rem;
+  margin-top: -15rem;
 }
 
 #image-references {
-  width: 32rem;
+  width: 25rem;
   border-radius: 30px;
-}
-
-.container-steps p {
-  text-align: left;
-}
-
-a {
-  text-decoration: underline;
-  color: blue;
-}
-
-.spacing {
-  margin: 5px 0 0 5px;
-}
-
-#button-cancel-teen {
-  background-color: #FF8080;
 }

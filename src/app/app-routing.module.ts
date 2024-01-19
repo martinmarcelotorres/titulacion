@@ -17,61 +17,64 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { TooltipsComponent } from './components/tooltips/tooltips.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FullComponent } from './layouts/full/full.component';
-import { TeenPrincipalComponent } from './components/teen/teen-principal/teen-principal.component';
-import { TeenFormComponent } from "./components/teen/teen-form/teen-form.component";
+import { TeenPrincipalComponent } from './components/teen/operationalunit-principal/teen-principal.component';
+import {TeenFormComponent} from "./components/teen/operationalunit-form/teen-form.component";
 import {
   AsignationPrincipalComponent
 } from "./components/asignation/asignation-principal/asignation-principal.component";
-import { AsignationFormComponent } from "./components/asignation/asignation-form/asignation-form.component";
+import {AsignationFormComponent} from "./components/asignation/asignation-form/asignation-form.component";
 import {
   FuncionaryPrincipalComponent
 } from "./components/funcionary/funcionary-principal/funcionary-principal.component";
 import { FuncionaryFormComponent } from './components/funcionary/funcionary-form/funcionary-form.component';
-import { permissionsGuard } from './components/component-funcionality/guards/permissions.guard';
-import {WelcomePrincipalComponent} from "./components/welcome/welcome-principal/welcome-principal.component";
-import { AdolescentListComponent } from './components/programs/adolescent-list/adolescent-list.component';
-import { AdolescentFormComponent } from './components/programs/adolescent-form/adolescent-form.component';
-import { BulkComponent } from './components/programs/bulk/component/bulk/bulk.component';
-import { TransDistComponent } from './components/programs/trans-dist/trans-dist.component';
-
-
+import { OperationalunitPrincipalComponent } from './components/operationalunit/operationalunit-principal/operationalunit-principal.component';
+import { OperationalunitFormComponent } from './components/operationalunit/operationalunit-form/operationalunit-form.component';
+import { ProgramPrincipalComponent } from './components/program/program-principal/program-principal.component';
+import { ProgramFormComponent } from './components/program/program-form/program-form.component';
+import { UnitprogramPrincipalComponent } from './components/unitprogram/unitprogram-principal/unitprogram-principal.component';
+import { UnitprogramFormComponent } from './components/unitprogram/unitprogram-form/unitprogram-form.component';
+import { AttendancePrincipalComponent } from './components/attendance/attendance-principal/attendance-principal.component';
+import { permisosGuard } from './components/guardar/permisos.guard';
 
 const routes: Routes = [
   {
-    path: "",
-    component: FullComponent,
+    path:"",
+    component:FullComponent,
     children: [
-      { path: "", redirectTo: "welcome", pathMatch: "full" },
-      { path: "home", canActivate: [permissionsGuard], component: DashboardComponent },
-      { path: "alerts", component: AlertsComponent },
-      {path: 'adolescent-list',component: AdolescentListComponent, canActivate: [permissionsGuard]},
-      {path: 'adolescent-form',component: AdolescentFormComponent, canActivate: [permissionsGuard]},
-      {path:"asignacion", component:BulkComponent, canActivate: [permissionsGuard]},
-      {path:"trans-dist", component:TransDistComponent, canActivate: [permissionsGuard]},
-      { path: "asignation", canActivate: [permissionsGuard], component: AsignationPrincipalComponent },
-      { path: "forms", component: FormsComponent },
-      { path: "teen", canActivate: [permissionsGuard], component: TeenPrincipalComponent },
-      { path: "grid-list", component: GridListComponent },
-      { path: "menu", component: MenuComponent },
-      { path: "tabs", component: TabsComponent },
-      { path: "expansion", component: ExpansionComponent },
-      { path: "chips", component: ChipsComponent },
-      { path: "progress", component: ProgressComponent },
-      { path: "toolbar", component: ToolbarComponent },
-      { path: "progress-snipper", component: ProgressSnipperComponent },
-      { path: "snackbar", component: SnackbarComponent },
-      { path: "slider", component: SliderComponent },
-      { path: "slide-toggle", component: SlideToggleComponent },
-      { path: "tooltip", component: TooltipsComponent },
-      { path: "button", component: ButtonsComponent },
-      { path: "teen-form", canActivate: [permissionsGuard], component: TeenFormComponent },
-      { path: "asignation-form", canActivate: [permissionsGuard], component: AsignationFormComponent },
-      { path: "asignation-list", component: AsignationPrincipalComponent },
-      { path: "funcionary", canActivate: [permissionsGuard], component: FuncionaryPrincipalComponent },
-      { path: "funcionary-form", canActivate: [permissionsGuard], component: FuncionaryFormComponent },
-      { path: "welcome", component: WelcomePrincipalComponent}
+      {path:"", redirectTo:"home", pathMatch:"full"},
+      {path:"home", component:DashboardComponent},
+      {path:"alerts", component:AlertsComponent},
+      {path:"asignation", component: AsignationPrincipalComponent},
+      {path:"forms", component:FormsComponent},
+      {path:"teen", component:TeenPrincipalComponent},
+      {path:"grid-list", component:GridListComponent},
+      {path:"menu", component:MenuComponent},
+      {path:"tabs", component:TabsComponent},
+      {path:"expansion", component:ExpansionComponent},
+      {path:"chips", component:ChipsComponent},
+      {path:"progress", component:ProgressComponent},
+      {path:"toolbar", component:ToolbarComponent},
+      {path:"progress-snipper", component:ProgressSnipperComponent},
+      {path:"snackbar", component:SnackbarComponent},
+      {path:"slider", component:SliderComponent},
+      {path:"slide-toggle", component:SlideToggleComponent},
+      {path:"tooltip", component:TooltipsComponent},
+      {path:"button", component:ButtonsComponent},
+      {path:"teen-form", component: TeenFormComponent},
+      {path:"asignation-form", component: AsignationFormComponent},
+      {path:"funcionary", component: FuncionaryPrincipalComponent},
+      {path:"funcionary-form", component: FuncionaryFormComponent},
+      {path:"operativeunit", component: OperationalunitPrincipalComponent},
+      {path:"operativeunit-form", component: OperationalunitFormComponent},
+      {path:"program", canActivate:[permisosGuard] , component: ProgramPrincipalComponent},
+      {path:"program-form", component: ProgramFormComponent},
+      {path:"unitprogram", component: UnitprogramPrincipalComponent},
+      {path:"unitprogram-form", component: UnitprogramFormComponent},
+      {path:"attendance", component: AttendancePrincipalComponent}
     ]
   },
+
+
 ];
 
 @NgModule({

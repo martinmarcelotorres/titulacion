@@ -1,18 +1,16 @@
 import { Component } from '@angular/core';
 import { AuthConfig, NullValidationHandler, OAuthService } from 'angular-oauth2-oidc';
-import { MenssageService } from './components/component-funcionality/services/login/menssage.service';
+import { MenssageService } from './components/component-funcionality/services/login/message.service';
 import { LoginService } from './components/component-funcionality/services/login/login.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: '<router-outlet></router-outlet>'
 })
 export class AppComponent {
 
-  title = 'Soa';
-
   isAdmin!: boolean;
+  title = 'frontend';
 
   constructor(
     private oauthService: OAuthService,
@@ -23,9 +21,9 @@ export class AppComponent {
 
   authConfig: AuthConfig = {
 
-    issuer: 'http://localhost:8080/realms/PRS',
+    issuer: 'http://localhost:8080/realms/soa',
     redirectUri: window.location.origin,
-    clientId: 'backend',
+    clientId: 'client',
     responseType: 'code',
     scope: 'openid profile email offline_access',
     showDebugInformation: true,
@@ -40,10 +38,11 @@ export class AppComponent {
         if (this.oauthService.hasValidIdToken()) {
           this.isAdmin = this.loginService.getIsAdmin();
           const username = this.oauthService.getIdentityClaims()['preferred_username']
-          this.messageService.sendMessage(username, this.loginService.getIsLoggerd(), this.isAdmin);
+          this.messageService.sendMessage(username, this.loginService.getIsLoggerd());
         }
       });
 
   }
+
 
 }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 import { Funcionary } from '../../models/funcionary/funcionary.model';
@@ -8,32 +8,49 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class FuncionaryService {
-  private urlFuncionary = `${environment.apiUrlFuncionary}/api/funcionaryData`;
+  private urlFuncionary = `${environment.apiUrl2}/api/funcionaryData`;
   private urlUbigeoAddress = `${environment.apiUrlUbigeoAddress}/api/address`;
   funcionarySelected: Funcionary | undefined = undefined;
 
   constructor(private _http: HttpClient) {}
 
-  findAll() {
-    return this._http.get(`${this.urlFuncionary}/listData`);
-  }
+  
 
-  findDataFuncionaryByIdSoa(idOperativeUnit: number): Observable<Funcionary[]> {
-    return this._http.get<Funcionary[]>(
-      `${this.urlFuncionary}/bySoaInfo/${idOperativeUnit}`
-    );
+  getHeaders(): { token: string, headers: HttpHeaders } {
+    // Obtén el token de algún lugar (almacenamiento local, servicio de autenticación, etc.)
+    const token = ''; // Reemplaza con la lógica para obtener tu token
+  
+    // Configura las cabeceras con el token Bearer
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+  
+    console.log('Token:', token);
+  
+    // Devuelve el token y las cabeceras
+    return { token, headers };
   }
+  
+  findAll(): Observable<any> {
+    return this._http.get(`${this.urlFuncionary}/listData`, { headers: this.getHeaders().headers });
+  }
+  
+  
 
   findAllDataActive() {
-    return this._http.get(this.urlFuncionary + '/listData/active');
+    const token = this.getHeaders().token;
+    console.log('Token soy el activo :', token);
+    return this._http.get(this.urlFuncionary + '/listData/active',);
   }
 
   findDataRankLegalGuardian() {
-    return this._http.get(this.urlFuncionary + '/listData/legalGuardian');
+    return this._http.get(this.urlFuncionary + '/listData/legalGuardian',);
   }
 
   findAllDataInactive() {
-    return this._http.get(this.urlFuncionary + '/listData/inactive');
+    const token = this.getHeaders().token;
+    console.log('Token soy el inactivo:', token);
+    return this._http.get(this.urlFuncionary + '/listData/inactive',);
   }
 
   findAllDataUbigeoAddress() {
@@ -65,8 +82,15 @@ export class FuncionaryService {
     );
   }
 
-  generarPDF(): Observable<ArrayBuffer> {
-    const url = `${this.urlFuncionary}/export-pdf`;
-    return this._http.get(url, { responseType: 'arraybuffer' });
+  /*
+  mergePdf(pdfUrls: string[]): Observable<Blob> {
+    return this.http.post<Blob>(`${this.baseUrl}/merge-pdf`, pdfUrls, {
+      responseType: 'blob' as 'json'
+    });
   }
+
+  getData(): Observable<any> {
+    return this.http.get(this.apiUrl);
+  }
+  */
 }
