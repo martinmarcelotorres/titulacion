@@ -1,0 +1,87 @@
+<h2 style="font-size: 24px; margin-bottom: 20px; color: #333; text-align: center;">REGISTRAR NUEVO PROGRAMA</h2>
+<div class="titleWeb" align="center">
+  <figure>
+
+    <figcaption class="blockquote-footer">
+      Por favor colocar toda la información que se pide a continuación,
+      con la información
+      <strong><cite title="Source Title">correcta</cite></strong>
+      y
+      <strong><cite title="Source Title">veridica.</cite></strong>
+    </figcaption>
+  </figure>
+</div>
+<p></p>
+<form class="registration-form" style="display: grid; gap: 20px;" (submit)="submitForm()">
+
+
+  <mat-form-field class="me-24 fs-16" appearance="fill">
+    <mat-label>NOMBRE</mat-label>
+    <input matInput type="text" id="name" [(ngModel)]="newAdolescent.name" name="name" required pattern="^[A-Za-z\s]+$">
+  </mat-form-field>
+
+
+  <mat-form-field class="me-24 fs-16" appearance="fill">
+    <mat-label>TIPO:</mat-label>
+    <input matInput type="text" id="type" [(ngModel)]="newAdolescent.type" name="type" required pattern="^[A-Za-z\s]+$">
+  </mat-form-field>
+
+  <mat-form-field class="me-24 fs-16" appearance="fill">
+    <mat-label>BENEFICIARIO:</mat-label>
+    <input matInput type="text" id="beneficiary" [(ngModel)]="newAdolescent.beneficiary" name="beneficiary" required
+      pattern="^[A-Za-z\s]+$">
+  </mat-form-field>
+
+  <mat-form-field class="me-24 fs-16" appearance="fill">
+    <mat-label>RESPONSABLE:</mat-label>
+    <input matInput type="text" id="responsible" [(ngModel)]="newAdolescent.responsible" name="responsible" required
+      pattern="^[A-Za-z\s]+$">
+  </mat-form-field>
+
+  <mat-form-field class="me-24 fs-16" appearance="fill">
+    <mat-label>DESCRIPCION:</mat-label>
+    <input matInput type="text" id="description" [(ngModel)]="newAdolescent.description" name="description" required>
+  </mat-form-field>
+
+
+
+
+  <mat-form-field class="formForRegister formForRegister">
+    <mat-label>NIVEL:</mat-label>
+    <mat-select matNativeControl id="level" [(ngModel)]="newAdolescent.level" name="level" required>
+      <mat-option value="S">SOA</mat-option>
+      <mat-option value="P">PRONACEJ</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <!-- tu-componente.component.html -->
+
+
+
+
+  <div class="form-group">
+
+    <label for="inicio" style="font-size: 16px; color: #555;">INICIO:</label><br>
+    <input type="date" id="inicio" class="form-control"
+      style="width: 96%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; background-color: #f5f5f5;"
+      [(ngModel)]="newAdolescent.startDate" name="inicio" required>
+    <!-- La restricción pattern permite solo números -->
+  </div>
+  <div class="form-group">
+    <label for="fin" style="font-size: 16px; color: #555;">FIN:</label><br>
+    <input type="date" id="fin" class="form-control"
+      style="width: 96%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px; background-color: #f5f5f5;"
+      [(ngModel)]="newAdolescent.endDate" name="fin" required>
+    <!-- La restricción pattern permite solo números -->
+  </div>
+
+
+
+  <div style="text-align: center;">
+    <button class="btn-delete" (click)="navigateToAdolescentList()">REGRESAR</button>
+    <button type="submit" class="btn-registrar">REGISTRAR</button>
+  </div>
+
+
+</form>
