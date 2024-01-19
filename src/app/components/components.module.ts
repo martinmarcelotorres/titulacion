@@ -11,7 +11,8 @@ import { TabsComponent } from './tabs/tabs.component';
 import { ExpansionComponent } from './expansion/expansion.component';
 import { ChipsComponent } from './chips/chips.component';
 import { ProgressComponent } from './progress/progress.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ProgressSnipperComponent } from './progress-snipper/progress-snipper.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
@@ -35,6 +36,8 @@ import { AttendancePrincipalComponent } from './attendance/attendance-principal/
 import { AttendanceFormComponent } from './attendance/attendance-form/attendance-form.component'
 import { TransDistComponent } from './program/trans-dist/trans-dist.component';
 import { AdolescentFormComponent } from '../programs/adolescent-form/adolescent-form.component';
+import { ActivitiesFormComponent } from './activities/activities-form/activities-form.component';
+import { HistorialPrincipalComponent } from './historial/historial-principal/historial-principal.component';
 
 
 @NgModule({
@@ -93,6 +96,8 @@ import { AdolescentFormComponent } from '../programs/adolescent-form/adolescent-
     AttendanceFormComponent,
     TransDistComponent,
     AdolescentFormComponent,
+    ActivitiesFormComponent,
+    HistorialPrincipalComponent
   ]
 })
 export class ComponentsModule { }

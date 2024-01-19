@@ -37,6 +37,8 @@ import { AttendancePrincipalComponent } from './components/attendance/attendance
 import { permisosGuard } from './components/guardar/permisos.guard';
 import { TransDistComponent } from './components/program/trans-dist/trans-dist.component';
 import { AdolescentFormComponent } from './programs/adolescent-form/adolescent-form.component';
+import { ActivitiesPrincipalComponent } from './components/activities/activities-principal/activities-principal.component';
+import { HistorialPrincipalComponent } from './components/historial/historial-principal/historial-principal.component';
 
 const routes: Routes = [
   {
@@ -75,6 +77,8 @@ const routes: Routes = [
       { path: "attendance", component: AttendancePrincipalComponent },
       { path: "trans-dist", component: TransDistComponent },
       { path: "adolescent-form", component: AdolescentFormComponent },
+      { path: "activities", canActivate: [permisosGuard], component: ActivitiesPrincipalComponent },
+      { path: "historial", canActivate: [permisosGuard], component: HistorialPrincipalComponent}
     ]
   },
 

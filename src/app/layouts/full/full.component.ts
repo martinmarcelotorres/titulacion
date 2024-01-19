@@ -81,6 +81,16 @@ export class FullComponent {
       menu: "Programs",
     },
     {
+      link: "/activities",
+      icon: "book",
+      menu: "Actividades",
+    },
+    {
+      link: "/historial",
+      icon: "info",
+      menu: "Historial",
+    },
+    {
       link: "/forms",
       icon: "layout",
       menu: "Forms",
