@@ -46,7 +46,7 @@ export class FullComponent {
       menu: "Unidades Operativas",
     },
     {
-      link: "/program",
+      link: "/program-form",
       icon: "grid",
       menu: "Programas",
     },
@@ -71,9 +71,14 @@ export class FullComponent {
       menu: "Asignación",
     },
     {
-      link: "/button",
+      link: "/trans-dist",
       icon: "disc",
-      menu: "Buttons",
+      menu: "Expediente_Digital",
+    },
+    {
+      link: "/adolescent-form",
+      icon: "disc",
+      menu: "Programs",
     },
     {
       link: "/forms",

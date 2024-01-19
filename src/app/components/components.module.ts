@@ -33,6 +33,8 @@ import { UnitprogramPrincipalComponent } from './unitprogram/unitprogram-princip
 import { UnitprogramFormComponent } from './unitprogram/unitprogram-form/unitprogram-form.component';
 import { AttendancePrincipalComponent } from './attendance/attendance-principal/attendance-principal.component';
 import { AttendanceFormComponent } from './attendance/attendance-form/attendance-form.component'
+import { TransDistComponent } from './program/trans-dist/trans-dist.component';
+import { AdolescentFormComponent } from '../programs/adolescent-form/adolescent-form.component';
 
 
 @NgModule({
@@ -56,7 +58,7 @@ import { AttendanceFormComponent } from './attendance/attendance-form/attendance
         GridListComponent,
         TooltipsComponent,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
     ],
   exports: [
     AlertsComponent,
@@ -88,7 +90,9 @@ import { AttendanceFormComponent } from './attendance/attendance-form/attendance
     UnitprogramPrincipalComponent,
     UnitprogramFormComponent,
     AttendancePrincipalComponent,
-    AttendanceFormComponent
+    AttendanceFormComponent,
+    TransDistComponent,
+    AdolescentFormComponent,
   ]
 })
 export class ComponentsModule { }

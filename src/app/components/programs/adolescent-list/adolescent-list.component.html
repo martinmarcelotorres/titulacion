@@ -1,0 +1,119 @@
+<div class="filter-section">
+  
+  <button class="agregar-btn-verde" (click)="navigateToAdolescentForm()"><strong>AGREGAR PROGRAMA</strong></button>
+  <button class="agregar-btn-report" (click)="openModal()"><strong>REPORTE</strong></button>
+
+    
+  </div>
+  <div class="filter-section">
+    <mat-form-field class="me-24 fs-16" appearance="fill">
+      <mat-label>FILTRO DE NOMBRE DEL PROGRAMA</mat-label>
+      <input matInput type="text" [(ngModel)]="nameFilter" (input)="filterAdolescentsByName()">
+    </mat-form-field>
+  
+    <mat-form-field class="me-24 fs-16" appearance="fill">
+      <mat-label>FILTRO DE NIVEL DEL PROGRAMA</mat-label>
+      <mat-select [(ngModel)]="levelFilter" (ngModelChange)="filterAdolescentsByLevel()">
+        <mat-option value="">TODOS</mat-option>
+        <mat-option value="S">SOA</mat-option>
+        <mat-option value="P">PRONACEJ</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="me-24 fs-16" appearance="fill">
+    <mat-label>FILTRO POR ESTADOS:</mat-label>
+    <mat-select [(ngModel)]="filterByStatus" (ngModelChange)="filterAdolescentsByStatus()">
+      <mat-option value="A">ACTIVOS</mat-option>
+      <mat-option value="I">INACTIVOS</mat-option>
+    </mat-select>
+  </mat-form-field>
+  </div>
+  
+  
+  <div class="adolescent-list">
+    
+    <table>
+      <thead>
+        <tr>
+          <th style="padding: 8px; text-align: center;">NOMBRE</th>
+          <th style="padding: 8px; text-align: center;">BENEFICIARIO</th>
+          <th style="padding: 8px; text-align: center;">RESPONSABLE</th>
+          <th style="padding: 8px; text-align: center;">DURACION</th>
+          <th style="padding: 8px; text-align: center;">NIVEL</th>
+          <th style="padding: 8px; text-align: center;">INICIO</th>
+          <th style="padding: 8px; text-align: center;">FIN</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <ng-container *ngFor="let adolescent of filteredAdolescents.slice().reverse()">
+          <tr *ngIf="(!nameFilter || adolescent.name.toLowerCase().includes(nameFilter.toLowerCase())) && 
+                     (!levelFilter || adolescent.level.toLowerCase() === levelFilter.toLowerCase())">
+           <!-- Existing code for rendering each row -->
+      <td  style="text-align: center;">{{ adolescent.name }}</td>
+      <td  style="text-align: center;">{{ adolescent.beneficiary }}</td>
+      <td  style="text-align: center;">{{ adolescent.responsible }}</td>
+
+      <td  style="text-align: center;" [ngClass]="{'text-red': adolescent.duration <= 15}">
+        {{ adolescent.duration }}<label> días</label>
+      </td>
+      
+      <td style="text-align: center;">
+        {{ adolescent.level === 'S' ? 'SOA' : (adolescent.level === 'P' ? 'PRONACEJ' : adolescent.level) }}
+      </td>
+      <td style="width: 150px; text-align: center;">{{ convertirFecha(adolescent.startDate) | date:'dd MMM yyyy' }}</td>
+      <td style="width: 150px; text-align: center;">{{ convertirFecha(adolescent.endDate) | date:'dd MMM yyyy' }}</td>
+        
+          <td style="padding: 8px; text-align: left;">
+            <button class="btn-edit" (click)="openEditForm(adolescent)"><strong>Editar</strong></button>
+          </td>
+  
+          <td>
+            <button class="btn-{{ isDeleteButton ? 'delete' : 'restore' }}"
+                    (click)="isDeleteButton ? deleteAdolescent(adolescent.id) : restoreAdolescent(adolescent.id)"><strong>
+              {{ isDeleteButton ? 'Eliminar' : 'Restaurar' }}</strong>
+            </button>
+          </td>
+  
+  
+  
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+    <mat-paginator
+  [length]="adolescents.length"
+  [pageSizeOptions]="[1, 5, 10, 25]"
+  (page)="onPageChange($event)"
+></mat-paginator>  <!-- Formulario de edición -->
+    <div *ngIf="showEditForm" class="edit-form-overlay">
+      <div class="edit-form">
+        <h3>Editar Adolescente</h3>
+        <form>
+          <label>NOMBRE:</label>
+          <input type="text" [(ngModel)]="editedAdolescent.name" name="name">
+  
+          <label>TIPO:</label>
+          <input type="text" [(ngModel)]="editedAdolescent.type" name="type">
+  
+          <label>BENEFICIARIO:</label>
+          <input type="text" [(ngModel)]="editedAdolescent.beneficiary" name="beneficiary">
+  
+          <label>RESPONSABLE:</label>
+          <input type="text" [(ngModel)]="editedAdolescent.responsible" name="responsible">
+          
+          <label>INICIO DEL PROGRAMA:</label>
+          <input type="date" [(ngModel)]="editedAdolescent.startDate" name="startDate" format="yyyy-MM-dd">
+                    
+          <label>FIN DEL PROGRAMA:</label>
+          <input type="date" [(ngModel)]="editedAdolescent.endDate" name="endDate" format="yyyy-MM-dd">
+          
+          <div class="form-group">
+            <button type="button" (click)="closeEditForm()" class="btn btn-secondary">LIMPIAR</button>
+            <button type="button" (click)="saveEditedAdolescent()" class="btn btn-primary">GUARDAR CAMBIO</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
