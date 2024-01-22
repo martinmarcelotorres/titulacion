@@ -2,9 +2,9 @@ import { AfterViewInit, Component, ViewChild } from '@angular/core';
 
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { Router } from '@angular/router';
-import { AdolescenteService } from 'src/app/components/component-funcionality/services/programs/adolescenteBulk.service';
-import { ProgramaService } from 'src/app/components/component-funcionality/services/programs/programa.service';
-import { TransaccionService } from 'src/app/components/component-funcionality/services/programs/transaccion.service';
+import { AdolescenteService } from 'src/app/components/programs/adolescenteBulk.service';
+import { ProgramaService } from 'src/app/components/programs/programa.service';
+import { TransaccionService } from 'src/app/components/programs/transaccion.service';
 
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { NativeDateAdapter } from '@angular/material/core';
