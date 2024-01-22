@@ -4,7 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import {Router} from "@angular/router";
 import {Activities} from "../../component-funcionality/models/activities/activities.model";
 import {HotToastService} from "@ngneat/hot-toast";
-import {ActivitiesService} from "../../component-funcionality/services/activities/activities.service";
+import {ActivitiesService} from "src/app/services/activities/activities.service";
 
 @Component({
   selector: 'app-activities-principal',

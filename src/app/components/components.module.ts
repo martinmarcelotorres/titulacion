@@ -38,11 +38,18 @@ import { TransDistComponent } from './program/trans-dist/trans-dist.component';
 import { AdolescentFormComponent } from '../programs/adolescent-form/adolescent-form.component';
 import { ActivitiesFormComponent } from './activities/activities-form/activities-form.component';
 import { HistorialPrincipalComponent } from './historial/historial-principal/historial-principal.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { ActivitiesPrincipalComponent } from './activities/activities-principal/activities-principal.component';
 
 
 @NgModule({
     imports: [
         CommonModule,
+        MatPaginatorModule,
         FeatherModule.pick(allIcons),
         DemoFlexyModule,
         ButtonsComponent,
@@ -62,6 +69,10 @@ import { HistorialPrincipalComponent } from './historial/historial-principal/his
         TooltipsComponent,
         FormsModule,
         ReactiveFormsModule,
+        MatChipsModule,
+        MatIconModule,
+        MatCardModule,
+        MatTableModule,
     ],
   exports: [
     AlertsComponent,
@@ -97,7 +108,8 @@ import { HistorialPrincipalComponent } from './historial/historial-principal/his
     TransDistComponent,
     AdolescentFormComponent,
     ActivitiesFormComponent,
-    HistorialPrincipalComponent
+    HistorialPrincipalComponent,
+    ActivitiesPrincipalComponent
   ]
 })
 export class ComponentsModule { }
