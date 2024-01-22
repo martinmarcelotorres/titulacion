@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AdolescentListComponent } from '../adolescent-list/adolescent-list.component';  
-import { AdolescentService } from 'src/app/components/component-funcionality/services/programs/adolescent.service';
+import { AdolescentService } from 'src/app/components/programs/adolescent.service';
 import { saveAs } from 'file-saver';
 import { MatSelectChange } from '@angular/material/select';
 import { HotToastService } from '@ngneat/hot-toast';
