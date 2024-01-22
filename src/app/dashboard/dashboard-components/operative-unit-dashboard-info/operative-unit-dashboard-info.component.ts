@@ -25,11 +25,28 @@ export class OperativeUnitDashboardInfoComponent implements OnInit {
   constructor(public _operativeUnitService: OperativeUnitService) {}
 
   ngOnInit(): void {
+    this.findAllDataCompleteOperativeUnit();
+    this.findAllDataCompleteFuncionary();
   }
 
+  findAllDataCompleteOperativeUnit() {
+    this._operativeUnitService
+      .findAllDataOperativeUnit()
+      .subscribe((dataOperativeUnit: any) => {
+        this.operativeUnitData = dataOperativeUnit;
+        this.dataSource = new MatTableDataSource(this.operativeUnitData);
+        this.dataSource.paginator = this.paginator;
+      });
+  }
 
-
-
+  findAllDataCompleteFuncionary() {
+    this._operativeUnitService
+      .findAllDataFuncionary()
+      .subscribe((dataFuncionary: any) => {
+        //console.log('Funcionarios: ', dataFuncionary);
+        this.funcionaryData = dataFuncionary;
+      });
+  }
 
   getDataInformationCompleteFuncionary(id_funcionary: number) {
     const funcionary = this.funcionaryData.find((item) => item.id_funcionary === id_funcionary);
