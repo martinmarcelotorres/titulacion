@@ -2,7 +2,8 @@
   overflow-x: auto;
 }
 
-td, th {
+td,
+th {
   text-align: center;
   vertical-align: middle;
 }
@@ -22,9 +23,14 @@ td.mat-footer-cell:first-of-type {
   border-radius: 15px;
 }
 
+#button-pdf {
+  color: white;
+  border-radius: 15px;
+}
+
 .container-button-new-model {
   display: flex;
-  margin-left: 52.5rem;
+  margin-left: 52.4rem;
   margin-top: -2.88rem;
 }
 
@@ -47,6 +53,23 @@ th.mat-header-cell {
   margin: 2px;
   border-radius: 15px;
   width: 100px;
+}
+
+#buttonEliminar,
+#buttonDelete {
+  background-color: #FF8080;
+}
+
+#buttonModificar {
+  background-color: #F1C93B;
+}
+
+#button-register {
+  background-color: #9ADE7B;
+}
+
+#button-pdf {
+  background-color: #E9B384;
 }
 
 .dialog-background {
@@ -77,7 +100,7 @@ th.mat-header-cell {
   margin-top: 10px;
 }
 
-.container-div-button-close{
+.container-div-button-close {
   display: flex;
   justify-content: flex-end;
 }

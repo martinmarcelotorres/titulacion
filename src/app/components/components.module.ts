@@ -44,6 +44,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ActivitiesPrincipalComponent } from './activities/activities-principal/activities-principal.component';
+import { AsignacionprogramsFormComponent } from './asignacionprograms/asignacionprograms-form/asignacionprograms-form.component';
+import { DialogComponentComponent } from './confirm-dialog/dialog-component/dialog-component.component';
 
 
 @NgModule({
@@ -72,7 +74,7 @@ import { ActivitiesPrincipalComponent } from './activities/activities-principal/
         MatChipsModule,
         MatIconModule,
         MatCardModule,
-        MatTableModule,
+        MatTableModule
     ],
   exports: [
     AlertsComponent,
@@ -109,7 +111,9 @@ import { ActivitiesPrincipalComponent } from './activities/activities-principal/
     AdolescentFormComponent,
     ActivitiesFormComponent,
     HistorialPrincipalComponent,
-    ActivitiesPrincipalComponent
+    ActivitiesPrincipalComponent,
+    AsignacionprogramsFormComponent,
+    DialogComponentComponent
   ]
 })
 export class ComponentsModule { }
