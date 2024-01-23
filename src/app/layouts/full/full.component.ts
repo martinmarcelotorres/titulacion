@@ -81,6 +81,11 @@ export class FullComponent {
       menu: "Programs",
     },
     {
+      link: "/adolescent-list",
+      icon: "disc",
+      menu: "Programs List",
+    },
+    {
       link: "/activities-principal",
       icon: "book",
       menu: "Actividades",

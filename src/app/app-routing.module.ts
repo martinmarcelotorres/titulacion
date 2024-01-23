@@ -42,6 +42,7 @@ import { HistorialPrincipalComponent } from './components/historial/historial-pr
 import { AsignacionprogramsListComponent } from './components/asignacionprograms/asignacionprograms-list/asignacionprograms-list.component';
 import { NotificacionListComponent } from './components/notificaciones/notificacion-list/notificacion-list.component';
 import { WelcomePrincipalComponent } from './components/welcome-principal/welcome-principal.component';
+import { AdolescentListComponent } from './programs/adolescent-list/adolescent-list.component';
 
 const routes: Routes = [
   {
@@ -80,6 +81,7 @@ const routes: Routes = [
       { path: "attendance", component: AttendancePrincipalComponent },
       { path: "trans-dist", component: TransDistComponent },
       { path: "adolescent-form", component: AdolescentFormComponent },
+      { path: "adolescent-list", component: AdolescentListComponent },
       { path: "activities-principal", canActivate: [permisosGuard], component: ActivitiesPrincipalComponent },
       { path: "historial", canActivate: [permisosGuard], component: HistorialPrincipalComponent},
       { path: "programa-actividad", component: AsignacionprogramsListComponent },

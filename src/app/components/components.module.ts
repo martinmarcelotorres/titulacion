@@ -50,6 +50,8 @@ import { NotificacionFormComponent } from './notificaciones/notificacion-form/no
 import { WelcomePrincipalComponent } from './welcome-principal/welcome-principal.component';
 import { NotificacionListComponent } from './notificaciones/notificacion-list/notificacion-list.component';
 import { AsignacionprogramsListComponent } from './asignacionprograms/asignacionprograms-list/asignacionprograms-list.component';
+import { AdolescentListComponent } from '../programs/adolescent-list/adolescent-list.component';
+import { ModalComponent } from '../programs/modal/modal.component';
 
 
 @NgModule({
@@ -113,6 +115,7 @@ import { AsignacionprogramsListComponent } from './asignacionprograms/asignacion
     AttendanceFormComponent,
     TransDistComponent,
     AdolescentFormComponent,
+    AdolescentListComponent,
     ActivitiesFormComponent,
     HistorialPrincipalComponent,
     ActivitiesPrincipalComponent,
@@ -121,7 +124,8 @@ import { AsignacionprogramsListComponent } from './asignacionprograms/asignacion
     NotificacionFormComponent,
     WelcomePrincipalComponent,
     NotificacionListComponent,
-    AsignacionprogramsListComponent
+    AsignacionprogramsListComponent,
+    ModalComponent
   ]
 })
 export class ComponentsModule { }
