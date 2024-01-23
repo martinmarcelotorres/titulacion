@@ -80,7 +80,7 @@ const routes: Routes = [
       { path: "attendance", component: AttendancePrincipalComponent },
       { path: "trans-dist", component: TransDistComponent },
       { path: "adolescent-form", component: AdolescentFormComponent },
-      { path: "activities", canActivate: [permisosGuard], component: ActivitiesPrincipalComponent },
+      { path: "activities-principal", canActivate: [permisosGuard], component: ActivitiesPrincipalComponent },
       { path: "historial", canActivate: [permisosGuard], component: HistorialPrincipalComponent},
       { path: "programa-actividad", component: AsignacionprogramsListComponent },
       { path: "notificaciones", component: NotificacionListComponent },

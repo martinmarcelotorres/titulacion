@@ -81,7 +81,7 @@ export class FullComponent {
       menu: "Programs",
     },
     {
-      link: "/activities",
+      link: "/activities-principal",
       icon: "book",
       menu: "Actividades",
     },
