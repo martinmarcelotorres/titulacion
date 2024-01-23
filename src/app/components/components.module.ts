@@ -46,6 +46,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { ActivitiesPrincipalComponent } from './activities/activities-principal/activities-principal.component';
 import { AsignacionprogramsFormComponent } from './asignacionprograms/asignacionprograms-form/asignacionprograms-form.component';
 import { DialogComponentComponent } from './confirm-dialog/dialog-component/dialog-component.component';
+import { NotificacionFormComponent } from './notificaciones/notificacion-form/notificacion-form.component';
+import { WelcomePrincipalComponent } from './welcome-principal/welcome-principal.component';
+import { NotificacionListComponent } from './notificaciones/notificacion-list/notificacion-list.component';
+import { AsignacionprogramsListComponent } from './asignacionprograms/asignacionprograms-list/asignacionprograms-list.component';
 
 
 @NgModule({
@@ -113,7 +117,11 @@ import { DialogComponentComponent } from './confirm-dialog/dialog-component/dial
     HistorialPrincipalComponent,
     ActivitiesPrincipalComponent,
     AsignacionprogramsFormComponent,
-    DialogComponentComponent
+    DialogComponentComponent,
+    NotificacionFormComponent,
+    WelcomePrincipalComponent,
+    NotificacionListComponent,
+    AsignacionprogramsListComponent
   ]
 })
 export class ComponentsModule { }

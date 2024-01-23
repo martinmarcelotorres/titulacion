@@ -25,7 +25,7 @@ export class FullComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private loginservice:LoginService) { }
+  constructor(private breakpointObserver: BreakpointObserver, private loginservice: LoginService) { }
 
   routerActive: string = "activelink";
 
@@ -39,7 +39,7 @@ export class FullComponent {
       link: "/attendance",
       icon: "grid",
       menu: "Asistencias",
-    },    
+    },
     {
       link: "/operativeunit",
       icon: "grid",
@@ -53,7 +53,7 @@ export class FullComponent {
     {
       link: "/unitprogram",
       icon: "grid",
-      menu: "Asignación De Programas a una Unidad Operativa", 
+      menu: "Asignación De Programas a una Unidad Operativa",
     },
     {
       link: "/teen",
@@ -89,6 +89,26 @@ export class FullComponent {
       link: "/historial",
       icon: "info",
       menu: "Historial",
+    },
+    {
+      link: "/asignation",
+      icon: "disc",
+      menu: "Asignación",
+    },
+    {
+      link: "/entidades",
+      icon: "layers",
+      menu: "Entidades Cooperantes",
+    },
+    {
+      link: "/programa-actividad",
+      icon: "layers",
+      menu: "Asignación Programa a actividad",
+    },
+    {
+      link: "/notificaciones",
+      icon: "layers",
+      menu: "Notificación de informes",
     },
     {
       link: "/forms",
@@ -161,11 +181,11 @@ export class FullComponent {
       menu: "Slide Toggle",
     },
   ]
-  login(){
+  login() {
     this.loginservice.login();
   }
 
-  logout(){
+  logout() {
     this.loginservice.logout();
   }
 }

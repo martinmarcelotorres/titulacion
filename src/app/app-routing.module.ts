@@ -39,6 +39,9 @@ import { TransDistComponent } from './components/program/trans-dist/trans-dist.c
 import { AdolescentFormComponent } from './programs/adolescent-form/adolescent-form.component';
 import { ActivitiesPrincipalComponent } from './components/activities/activities-principal/activities-principal.component';
 import { HistorialPrincipalComponent } from './components/historial/historial-principal/historial-principal.component';
+import { AsignacionprogramsListComponent } from './components/asignacionprograms/asignacionprograms-list/asignacionprograms-list.component';
+import { NotificacionListComponent } from './components/notificaciones/notificacion-list/notificacion-list.component';
+import { WelcomePrincipalComponent } from './components/welcome-principal/welcome-principal.component';
 
 const routes: Routes = [
   {
@@ -78,7 +81,10 @@ const routes: Routes = [
       { path: "trans-dist", component: TransDistComponent },
       { path: "adolescent-form", component: AdolescentFormComponent },
       { path: "activities", canActivate: [permisosGuard], component: ActivitiesPrincipalComponent },
-      { path: "historial", canActivate: [permisosGuard], component: HistorialPrincipalComponent}
+      { path: "historial", canActivate: [permisosGuard], component: HistorialPrincipalComponent},
+      { path: "programa-actividad", component: AsignacionprogramsListComponent },
+      { path: "notificaciones", component: NotificacionListComponent },
+      { path: "welcome", component: WelcomePrincipalComponent }
     ]
   },
 
