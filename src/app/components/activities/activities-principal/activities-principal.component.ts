@@ -49,7 +49,7 @@ export class ActivitiesPrincipalComponent implements OnInit {
   }
 
   navigateToForm() {
-    this._router.navigate(['funcionary-form']).then(() => {
+    this._router.navigate(['activities-principal']).then(() => {
     });
   }
 
